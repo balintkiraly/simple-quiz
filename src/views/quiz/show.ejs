@@ -1,1 +1,43 @@
-<h1>Show quiz</h1>
+<%- include('../components/header') -%>
+
+<h1 class="font-bold text-4xl my-6 text-gray-700 text-center">Name of the Quiz</h1>
+
+<div class="max-w rounded m-4 overflow-hidden shadow-lg">
+  <div class="px-6 py-4">
+    <div class="font-bold text-2xl text-gray-700 mb-2">Is this the first question?</div>
+    <div class="flex flex-col">
+      <label class="inline-flex items-center my-5">
+        <input type="radio" class="form-radio h-6 w-6 text-teal-600" name="answer">
+        <span class="ml-3 text-xl text-gray-700">
+          Lorem ipsum dolor sit.
+        </span>
+      </label>
+      <label class="inline-flex items-center my-5">
+        <input type="radio" class="form-radio h-6 w-6 text-teal-600" name="answer">
+        <span class="ml-3 text-xl text-gray-700">
+          Consectetur adipisicing elit. Vel, dolore.
+        </span>
+      </label>
+      <label class="inline-flex items-center my-5">
+        <input type="radio" class="form-radio h-6 w-6 text-teal-600" name="answer">
+        <span class="ml-3 text-xl text-gray-700">
+          Eveniet sit pariatur quia delectus, officiis reiciendis.
+        </span>
+      </label>
+      <label class="inline-flex items-center my-5">
+        <input type="radio" class="form-radio h-6 w-6 text-teal-600" name="answer">
+        <span class="ml-3 text-xl text-gray-700">
+          Esse dolore blanditiis iure aperiam rem velit possimus voluptatum.
+        </span>
+      </label>
+    </div>
+  </div>
+  <div class="px-6 pt-4 pb-5 flex flex-col-reverse">
+    <a href="/quiz/show" class="self-end shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+      Next
+    </a>
+  </div>
+</div>
+  
+
+<%- include('../components/footer') -%>

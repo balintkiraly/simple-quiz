@@ -12,5 +12,6 @@ router.get('/', (_req, res) => {
 router.use('/auth', authRouter);
 router.use('/user', userRouter);
 router.use('/quiz', quizRouter);
+router.get('*', (_req, res) => { res.render('errors/404') })
 
 export default router
