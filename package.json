@@ -1,23 +1,23 @@
 {
-	"name": "simple-quiz",
-	"version": "1.0.0",
-	"main": "src/app.js",
-	"repository": "git@github.com:balintkiraly/simple-quiz.git",
-	"author": "balintkiraly <balint.kiraly@protonmail.com>",
-	"license": "MIT",
-	"scripts": {
-		"start": "yarn build:css && node -r esm ./src/app.js",
-		"build:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
-		"watch:css": "postcss --watch public/stylesheets/tailwind.css -o public/stylesheets/style.css"
-	},
-	"dependencies": {
-		"@tailwindcss/custom-forms": "^0.2.1",
-		"ejs": "^3.1.5",
-		"esm": "^3.2.25",
-		"express": "^4.17.1",
-		"postcss-cli": "^8.0.0"
-	},
-	"devDependencies": {
-		"tailwindcss": "^1.8.10"
-	}
+  "name": "simple-quiz",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "repository": "git@github.com:balintkiraly/simple-quiz.git",
+  "author": "balintkiraly <balint.kiraly@protonmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn build:css && node -r esm ./src/app.js",
+    "build:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
+    "watch:css": "postcss --watch public/stylesheets/tailwind.css -o public/stylesheets/style.css"
+  },
+  "dependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "ejs": "^3.1.5",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "postcss-cli": "^8.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^1.8.10"
+  }
 }
