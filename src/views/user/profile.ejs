@@ -1,1 +1,73 @@
-<h1>Profile</h1>
+<%- include('../components/logged-in-header') -%>
+
+<h1 class="font-bold text-4xl my-6 text-gray-700 text-center">Profile</h1>
+
+<div class="max-w rounded m-4 overflow-hidden shadow-lg">
+  <div class="px-6 py-4">
+    <div class="font-bold text-2xl text-gray-700 mb-2">Username's profile</div>
+    <div class="flex flex-col">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            First Name
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+            Last Name
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe">
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full px-3">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+            Password
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************">
+          <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full px-3">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+            Password again
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************">
+        </div>
+      </div>
+
+      <div class="px-6 pt-4 pb-5 flex flex-col-reverse">
+        <button class="self-end shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+          Update profile
+        </button>
+      </div>
+
+      <hr>
+
+      <div class="font-bold text-2xl text-gray-700 mb-2 mt-4">Filled quizzes</div>
+      <table class="table-fixed mx-1 my-4">
+        <thead>
+          <tr>
+            <th class="w-7/8 py-4 text-left text-gray-600">Name of the quiz</th>
+            <th class="w-1/8 py-4 text-gray-600">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border px-4 py-3">Name of the first quiz</td>
+            <td class="border px-4 py-3 text-center">85%</td>
+          </tr>
+          <tr class="bg-gray-100">
+            <td class="border px-4 py-3">Name of the second quiz</td>
+            <td class="border px-4 py-3 text-center">97.4%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+  
+
+<%- include('../components/footer') -%>

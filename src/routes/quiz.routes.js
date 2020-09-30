@@ -10,6 +10,10 @@ router.get('/show', (_req, res) => {
   res.render('quiz/show')
 })
 
+router.get('/success', (_req, res) => {
+  res.render('quiz/success')
+})
+
 router.get('/new', (_req, res) => {
   res.render('quiz/new')
 })
