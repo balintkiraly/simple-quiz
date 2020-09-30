@@ -12,9 +12,11 @@ router.get('/logged-in', (_req, res) => {
   res.render('logged-in-index')
 })
 
-router.use('/auth', authRouter);
-router.use('/user', userRouter);
-router.use('/quiz', quizRouter);
-router.get('*', (_req, res) => { res.render('errors/404') })
+router.use('/auth', authRouter)
+router.use('/user', userRouter)
+router.use('/quiz', quizRouter)
+router.get('*', (_req, res) => {
+  res.render('errors/404')
+})
 
 export default router
