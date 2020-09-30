@@ -8,6 +8,9 @@ const router = Router()
 router.get('/', (_req, res) => {
   res.render('index')
 })
+router.get('/logged-in', (_req, res) => {
+  res.render('logged-in-index')
+})
 
 router.use('/auth', authRouter);
 router.use('/user', userRouter);
