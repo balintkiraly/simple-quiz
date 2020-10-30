@@ -23,8 +23,8 @@ router.get('/edit', (_req, res) => {
   res.render('quiz/edit')
 })
 
-router.post('/', createQuiz(req, res, next))
-router.put('/:id', updateQuiz(req, res, next))
-router.delete('/:id', deleteQuiz(req, res, next))
+router.post('/', createQuiz)
+router.put('/:id', updateQuiz)
+router.delete('/:id', deleteQuiz)
 
 export default router

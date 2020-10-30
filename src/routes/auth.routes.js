@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { login, logout, reset_password } from '../middleware/auth'
+import { login, logout, resetPassword } from '../middleware/auth'
 import { createUser } from '../middleware/user'
 
 const router = Router()
@@ -16,9 +16,9 @@ router.get('/forgot-password', (_req, res) => {
   res.render('auth/forgot-password')
 })
 
-routes.post('/login', login(req, res, next))
-routes.post('/logout', logout(req, res, next))
-routes.post('/registration', createUser(req, res, next))
-routes.post('/reset_password', reset_password(req, res, next))
+router.post('/login', login)
+router.post('/logout', logout)
+router.post('/registration', createUser)
+router.post('/reset_password', resetPassword)
 
 export default router
