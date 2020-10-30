@@ -6,7 +6,8 @@
 
 <div class="max-w rounded m-4 overflow-hidden shadow-lg">
   <div class="px-6 py-4">
-    <% quiz.questions.map((question) => { %>
+    <% quiz.questions.map((question, index) => { %>
+    <div id="<%= `step-${index}` %>">
       <div class="font-bold text-2xl text-gray-700 mb-2">
         <%= question.title %>
       </div>
@@ -17,8 +18,8 @@
             class="form-radio h-6 w-6 text-teal-600"
             name="<%= `answer-${question.id}` %>"
           />
-          <span class="ml-3 text-xl text-gray-700"> 
-            <%= question.answers.a.content %> 
+          <span class="ml-3 text-xl text-gray-700">
+            <%= question.answers.a.content %>
           </span>
         </label>
         <label class="inline-flex items-center my-5">
@@ -27,7 +28,7 @@
             class="form-radio h-6 w-6 text-teal-600"
             name="<%= `answer-${question.id}` %>"
           />
-          <span class="ml-3 text-xl text-gray-700"> 
+          <span class="ml-3 text-xl text-gray-700">
             <%= question.answers.b.content %>
           </span>
         </label>
@@ -52,16 +53,21 @@
           </span>
         </label>
       </div>
+    </div>
     <% }) %>
   </div>
   <div class="px-6 pt-4 pb-5 flex flex-col-reverse">
-    <a
-      href="/quiz/success"
+    <span
+      id="next-button"
       class="self-end shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
     >
       Next
-    </a>
+    </span>
   </div>
 </div>
 
+<script src="/scripts/quiz_steps.js"></script>
+<script>
+  quizSteps(<%- quiz.questions.length %>);
+</script>
 <%- include('../components/footer') -%>
