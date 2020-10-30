@@ -1,14 +1,10 @@
 import { Router } from 'express'
-import { createQuiz, deleteQuiz, updateQuiz } from '../middleware/quiz'
+import { createQuiz, deleteQuiz, updateQuiz, getQuizzes, getQuiz } from '../middleware/quiz'
 
 const router = Router()
 
-router.get('/', (_req, res) => {
-  res.render('quiz/index')
-})
-
-router.get('/show', (_req, res) => {
-  res.render('quiz/show')
+router.get('/', getQuizzes, (req, res) => {
+  res.render('quiz/index', { quizzes: req.quizzes })
 })
 
 router.get('/success', (_req, res) => {
@@ -19,8 +15,12 @@ router.get('/new', (_req, res) => {
   res.render('quiz/new')
 })
 
-router.get('/edit', (_req, res) => {
-  res.render('quiz/edit')
+router.get('/:id', getQuiz, (req, res) => {
+  res.render('quiz/show', { quiz: req.quiz })
+})
+
+router.get('/:id/edit', getQuiz, (req, res) => {
+  res.render('quiz/edit', { quiz: req.quiz })
 })
 
 router.post('/', createQuiz)

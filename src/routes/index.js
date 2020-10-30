@@ -2,14 +2,15 @@ import { Router } from 'express'
 import authRouter from './auth.routes'
 import userRouter from './user.routes'
 import quizRouter from './quiz.routes'
+import { getLatestQuizzes } from '../middleware/quiz'
 
 const router = Router()
 
-router.get('/', (_req, res) => {
-  res.render('index')
-})
-router.get('/logged-in', (_req, res) => {
-  res.render('logged-in-index')
+router.get('/', getLatestQuizzes, (req, res) => {
+  res.render('index', {
+    latestQuizzes: req.latestQuizzes,
+    thereAreMore: req.thereAreMore,
+  })
 })
 
 router.use('/auth', authRouter)

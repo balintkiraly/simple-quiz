@@ -1,4 +1,5 @@
-export const createUser = (_req, _res, next) => {
+export const createUser = (_req, res, _next) => {
   // TODO: Create a new user
-  return next()
+  res.cookie('isLoggedIn', 1)
+  res.redirect('/')
 }
