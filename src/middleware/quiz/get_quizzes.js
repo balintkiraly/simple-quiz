@@ -1,4 +1,6 @@
-export const getQuizzes = (_req, _res, next) => {
-  // TODO: return all of the quizzes
+import { quizzes } from '../../mock/quiz'
+
+export const getQuizzes = (req, _res, next) => {
+  req.quizzes = quizzes
   next()
 }

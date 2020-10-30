@@ -1,3 +1,2 @@
 src/views/components/header.ejs
-src/views/components/logged-in-header.ejs
 src/views/components/footer.ejs
