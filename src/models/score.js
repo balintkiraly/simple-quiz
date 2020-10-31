@@ -1,3 +1,5 @@
+import mongoose from 'mongoose'
+
 export const Score = mongoose.model(
   'Score',
   new Schema({

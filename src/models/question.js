@@ -1,3 +1,5 @@
+import mongoose from 'mongoose'
+
 export const Question = mongoose.model(
   'Question',
   new Schema({
