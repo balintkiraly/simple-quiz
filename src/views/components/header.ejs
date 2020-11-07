@@ -10,3 +10,7 @@
     <%- include('./navigation') -%>
 
     <div class="container mx-auto px-4">
+      <% if (error) { %>
+        <%= error %>
+      <% } %>
+
