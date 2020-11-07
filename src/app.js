@@ -1,11 +1,11 @@
 import express from 'express'
 import path from 'path'
-import routes from './routes'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
+import routes from './routes'
+import { APP_PORT } from './config/environment'
 
 const app = express()
-const port = 3000
 
 app.use(
   express.static(path.join(__dirname, '../', 'public'), {
@@ -30,6 +30,6 @@ app.use('*', (req, _res, next) => {
 })
 app.use('/', routes)
 
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`)
+app.listen(APP_PORT, () => {
+  console.log(`App listening at http://localhost:${APP_PORT}`)
 })

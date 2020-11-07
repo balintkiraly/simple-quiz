@@ -1,6 +1,7 @@
-import { quizzes } from '../../mock/quiz'
+import { Quiz } from '../../models'
 
-export const getQuizzes = (req, _res, next) => {
-  req.quizzes = quizzes
+export const getQuizzes = async (req, _res, next) => {
+  req.quizzes = await Quiz.find()
+
   next()
 }

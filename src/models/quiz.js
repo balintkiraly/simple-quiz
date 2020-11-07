@@ -1,8 +1,10 @@
+import mongoose from '../config/db'
+
 export const Quiz = mongoose.model(
   'Quiz',
-  new Schema({
+  new mongoose.Schema({
     title: String,
     description: String,
-    questions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+    questions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Question' }],
   }),
 )

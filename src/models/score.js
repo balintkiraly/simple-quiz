@@ -1,7 +1,9 @@
+import mongoose from '../config/db'
+
 export const Score = mongoose.model(
   'Score',
-  new Schema({
+  new mongoose.Schema({
     percentage: Number,
-    quiz: { type: Schema.Types.ObjectId, ref: 'Quiz' },
+    quiz: { type: mongoose.Schema.Types.ObjectId, ref: 'Quiz' },
   }),
 )
