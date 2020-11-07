@@ -1,8 +1,8 @@
 import mongoose from '../config/db'
+import md5 from 'md5'
 
-export const User = mongoose.model(
-  'User',
-  new mongoose.Schema({
+const userSchema = new mongoose.Schema(
+  {
     name: {
       type: String,
       required: true,
@@ -23,5 +23,17 @@ export const User = mongoose.model(
       },
     ],
     scores: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Score' }],
-  }),
+  },
+  {
+    toObject: {
+      virtuals: true,
+    },
+    toJSON: {
+      virtuals: true,
+    },
+  },
 )
+userSchema.virtual('avatar').get(function () {
+  return `http://gravatar.com/avatar/${md5(this.email)}`
+})
+export const User = mongoose.model('User', userSchema)
