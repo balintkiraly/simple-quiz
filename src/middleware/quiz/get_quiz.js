@@ -1,9 +1,9 @@
-import { quizzes } from '../../mock/quiz'
+import { Quiz } from '../../models'
 
-export const getQuiz = (req, res, next) => {
-  req.quiz = quizzes.find((quiz) => quiz.id == req.params.id)
-  
-  if(req.quiz) {
+export const getQuiz = async (req, res, next) => {
+  req.quiz = await Quiz.find({ id: req.params.id })
+
+  if (req.quiz) {
     next()
   } else {
     res.render('errors/404')

@@ -1,4 +1,10 @@
-export const createQuiz = (_req, _res, next) => {
-  // TODO: Create a quiz
+import { Quiz } from '../../models'
+
+export const createQuiz = async (req, _res, next) => {
+  await Quiz.create({
+    title: req.body.title,
+    description: req.body.description,
+  })
+
   next()
 }
