@@ -1,5 +1,4 @@
 export const isAuthenticated = (req, res, next) => {
-  // Make sure the user is logged in
   contentType = req.headers['content-type'] || ''
 
   isAPICall = contentType.indexOf('application/json') !== -1
@@ -10,5 +9,5 @@ export const isAuthenticated = (req, res, next) => {
   } else if (isAPICall || isFormPost) {
     return res.sendStatus(401)
   }
-  res.render('error/not-authenticated')
+  res.render('error/401')
 }

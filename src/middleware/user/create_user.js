@@ -8,6 +8,6 @@ export const createUser = async (req, res, _next) => {
     password: await hash(req.body.password, 10),
   })
 
-  res.cookie('isLoggedIn', 1)
+  req.session.user = user
   res.redirect('/')
 }

@@ -1,4 +1,3 @@
-export const getUserID = () => {
-  // TODO: Get user's ID from session
-  return 1
+export const getUserID = (session) => {
+  return session?.user?.id
 }

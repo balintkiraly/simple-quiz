@@ -1,9 +1,9 @@
-import { quizzes } from '../../mock/quiz'
+import { Quiz } from '../../models'
 
 export const getLatestQuizzes = (req, _res, next) => {
   const limit = 3
 
-  req.latestQuizzes = quizzes.slice(0, limit)
-  req.thereAreMore = quizzes.length > limit
+  req.latestQuizzes = await Quiz.find().limit(limit)
+  req.thereAreMore = await Quiz.count() > limit
   next()
 }

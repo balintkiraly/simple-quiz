@@ -1,4 +1,4 @@
-export const updateQuiz = (_req, _res, next) => {
+export const updateQuestion = (_req, _res, next) => {
   // TODO: Update a specific quiz
   next()
 }

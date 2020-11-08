@@ -1,4 +1,4 @@
-export const deleteQuiz = (_req, _res, next) => {
-  // TODO: Delete a quiz
+export const deleteQuestion = (_req, _res, next) => {
+  // TODO: Delete a question
   next()
 }
