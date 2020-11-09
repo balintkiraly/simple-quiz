@@ -1,4 +1,4 @@
 export const sendQuiz = (_req, _res, next) => {
-  // TODO: Save the answers
+  // TODO: Calculate the score based by the answers
   next()
 }
