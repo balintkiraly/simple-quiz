@@ -1,6 +1,7 @@
-export const createQuestion = (_req, _res, next) => {
-  
-  const question = await Question.create({
+import { Question } from '../../models'
+
+export const createQuestion = (req, _res, next) => {
+  await Question.create({
     title: req.body.title,
     description: req.body.description,
     correctAnswer: req.body.correctAnswer,
