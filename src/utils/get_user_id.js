@@ -1,3 +1,3 @@
 export const getUserID = (session) => {
-  return session?.user?.id
+  return session && session.user && session.user.id
 }
