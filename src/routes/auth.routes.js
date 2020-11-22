@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { body } from 'express-validator'
+import { User } from '../models'
 import { login, logout, resetPassword } from '../middleware/auth'
 import { createUser } from '../middleware/user'
 import { validate } from '../utils/validator'
@@ -25,7 +26,21 @@ router.post(
   validate(
     [
       body('name').isString().notEmpty(),
-      body('email').isEmail(),
+      body('email')
+        .isEmail()
+        .custom((value) => {
+          return new Promise((resolve, reject) => {
+            User.findOne({ email: value }, function (err, user) {
+              if (err) {
+                reject(new Error('Server Error'))
+              }
+              if (Boolean(user)) {
+                reject(new Error('E-mail already in use'))
+              }
+              resolve(true)
+            })
+          })
+        }),
       body('password').isLength({ min: 6 }),
       body('passwordConfirmation').custom((value, { req }) => {
         if (value != req.body.password) {
