@@ -1,6 +1,8 @@
 import { Router } from 'express'
 import { login, logout, resetPassword } from '../middleware/auth'
 import { createUser } from '../middleware/user'
+import { validate } from '../utils'
+import { registrationValidator } from '../validators'
 
 const router = Router()
 
@@ -18,7 +20,11 @@ router.get('/forgot-password', (_req, res) => {
 
 router.post('/login', login)
 router.post('/logout', logout)
-router.post('/registration', createUser)
+router.post(
+  '/registration',
+  validate(registrationValidator, 'auth/registration'),
+  createUser,
+)
 router.post('/reset_password', resetPassword)
 
 export default router
