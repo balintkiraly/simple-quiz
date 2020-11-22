@@ -27,6 +27,12 @@ router.post(
       body('name').isString().notEmpty(),
       body('email').isEmail(),
       body('password').isLength({ min: 6 }),
+      body('passwordConfirmation').custom((value, { req }) => {
+        if (value != req.body.password) {
+          throw new Error('Password confirmation does not match password')
+        }
+        return true
+      }),
     ],
     'auth/registration',
   ),
