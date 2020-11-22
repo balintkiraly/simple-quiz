@@ -22,3 +22,14 @@
         </div>
       <% } %>
 
+      <% if (success != '') { %>
+        <div class="flex bg-green-200 p-4 mt-2">
+          <div class="flex justify-between w-full">
+            <div class="text-green-600">
+              <p class="mb-2 font-bold">
+                <%= success %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% } %>

@@ -1,5 +1,10 @@
 import { Router } from 'express'
-import { login, logout, resetPassword } from '../middleware/auth'
+import {
+  login,
+  logout,
+  resetPassword,
+  sendPasswordReset,
+} from '../middleware/auth'
 import { createUser } from '../middleware/user'
 import { validate } from '../utils'
 import { registrationValidator } from '../validators'
@@ -18,6 +23,10 @@ router.get('/forgot-password', (_req, res) => {
   res.render('auth/forgot-password')
 })
 
+router.get('/reset-password/:token', (req, res) => {
+  res.render('auth/reset-password', { token: req.params.token })
+})
+
 router.post('/login', login)
 router.post('/logout', logout)
 router.post(
@@ -25,6 +34,7 @@ router.post(
   validate(registrationValidator, 'auth/registration'),
   createUser,
 )
-router.post('/reset_password', resetPassword)
+router.post('/forgot-password', sendPasswordReset)
+router.post('/reset-password', resetPassword)
 
 export default router

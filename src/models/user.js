@@ -15,6 +15,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    passwordToken: {
+      type: String,
+      required: false,
+      unique: true,
+    },
     quizzes: [
       {
         type: mongoose.Schema.Types.ObjectId,
