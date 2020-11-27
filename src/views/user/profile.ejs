@@ -76,14 +76,12 @@
           </tr>
         </thead>
         <tbody>
+          <% user.scores.map((score) => { %>
           <tr>
-            <td class="border px-4 py-3">Name of the first quiz</td>
-            <td class="border px-4 py-3 text-center">85%</td>
+            <td class="border px-4 py-3"><%= score.quiz.title %></td>
+            <td class="border px-4 py-3 text-center"><%= score.percentage %></td>
           </tr>
-          <tr class="bg-gray-100">
-            <td class="border px-4 py-3">Name of the second quiz</td>
-            <td class="border px-4 py-3 text-center">97.4%</td>
-          </tr>
+          <% }) %>
         </tbody>
       </table>
     </div>
