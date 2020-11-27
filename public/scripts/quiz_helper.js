@@ -1,4 +1,5 @@
-const createQuestion = async (quizId, body) => {
+const createQuestion = async (quizId) => {
+  const body = {}
   const response = await fetch(`/quiz/${quizId}/questions`, {
     method: 'POST',
     body,

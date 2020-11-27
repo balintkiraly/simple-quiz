@@ -10,6 +10,11 @@
       <div class="px-6 py-4">
         <div class="font-bold text-xl text-gray-700 mb-2">
           <%= quiz.title %>
+          <% if(isLoggedIn) { %>
+            <% if(quiz.owner.id == user.id) { %>
+              
+            <% } %>
+          <% } %>
         </div>
         <p class="text-gray-700 text-base">
           <%= quiz.description %>

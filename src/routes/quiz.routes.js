@@ -1,5 +1,19 @@
 import { Router } from 'express'
-import { createQuiz, deleteQuiz, updateQuiz, getQuizzes, getQuiz } from '../middleware/quiz'
+import {
+  createQuestion,
+  deleteQuestion,
+  updateQuestion,
+} from '../middleware/question'
+import {
+  createDraftQuiz,
+  createQuiz,
+  deleteQuiz,
+  updateQuiz,
+  getQuizzes,
+  getQuiz,
+  isOwnQuiz,
+} from '../middleware/quiz'
+import { isAuthenticated } from '../middleware/auth'
 
 const router = Router()
 
@@ -11,20 +25,24 @@ router.get('/success', (_req, res) => {
   res.render('quiz/success')
 })
 
-router.get('/new', (_req, res) => {
-  res.render('quiz/new')
+router.get('/new', isAuthenticated, createDraftQuiz, (req, res) => {
+  res.render('quiz/new', { quiz: req.quiz })
 })
 
 router.get('/:id', getQuiz, (req, res) => {
   res.render('quiz/show', { quiz: req.quiz })
 })
 
-router.get('/:id/edit', getQuiz, (req, res) => {
+router.get('/:id/edit', isAuthenticated, isOwnQuiz, getQuiz, (req, res) => {
   res.render('quiz/edit', { quiz: req.quiz })
 })
 
 router.post('/', createQuiz)
-router.put('/:id', updateQuiz)
-router.delete('/:id', deleteQuiz)
+router.put('/:id', isAuthenticated, isOwnQuiz, updateQuiz)
+router.delete('/:id', isAuthenticated, isOwnQuiz, deleteQuiz)
+
+router.post('/:id/questions', isAuthenticated, isOwnQuiz, createQuestion)
+router.put('/:id/questions/:qid', isAuthenticated, isOwnQuiz, updateQuestion)
+router.delete('/:id/questions/:qid', isAuthenticated, isOwnQuiz, deleteQuestion)
 
 export default router
