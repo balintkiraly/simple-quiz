@@ -10,7 +10,7 @@ import { APP_PORT } from './config/environment'
 const app = express()
 
 app.use(cookieParser('secret'))
-app.use(session({ cookie: { maxAge: 60000 } }))
+app.use(session({ cookie: { maxAge: 6000000 } }))
 app.use(
   express.static(path.join(__dirname, '../', 'public'), {
     maxAge: 31557600000,
