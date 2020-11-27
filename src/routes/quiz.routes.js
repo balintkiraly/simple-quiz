@@ -6,7 +6,6 @@ import {
 } from '../middleware/question'
 import {
   createDraftQuiz,
-  createQuiz,
   deleteQuiz,
   updateQuiz,
   getQuizzes,
