@@ -11,8 +11,8 @@
         <div class="font-bold text-xl text-gray-700 mb-2">
           <%= quiz.title %>
           <% if(isLoggedIn) { %>
-            <% if(quiz.owner.id == user.id) { %>
-              
+            <% if(quiz.owner == currentUser.id) { %>
+              OWNER
             <% } %>
           <% } %>
         </div>
