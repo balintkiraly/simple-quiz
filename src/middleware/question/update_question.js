@@ -1,30 +1,32 @@
 import { Question } from '../../models'
 
-export const updateQuestion = async (_req, _res, next) => {
-  await Question.updateOne(
-    {
-      id: req.params.id,
-    },
+export const updateQuestion = async (req, res, _next) => {
+  const question = await Question.updateOne(
+    { _id: req.params.qid },
     {
       title: req.body.title,
-      description: req.body.description,
       correctAnswer: req.body.correctAnswer,
       answers: {
         a: {
-          content: req.body.answerA,
+          content: req.body.answers.a,
         },
         b: {
-          content: req.body.answerB,
+          content: req.body.answers.b,
         },
         c: {
-          content: req.body.answerC,
+          content: req.body.answers.c,
         },
         d: {
-          content: req.body.answerD,
+          content: req.body.answers.d,
         },
       },
     },
   )
 
-  next()
+  res.json({
+    answers: question.answers,
+    correctAnswer: question.correctAnswer,
+    title: question.title,
+    id: question._id,
+  })
 }

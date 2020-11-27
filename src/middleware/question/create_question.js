@@ -31,5 +31,10 @@ export const createQuestion = async (req, res, next) => {
     { new: true, useFindAndModify: false },
   )
 
-  res.json(question)
+  res.json({
+    answers: question.answers,
+    correctAnswer: question.correctAnswer,
+    title: question.title,
+    id: question._id,
+  })
 }
