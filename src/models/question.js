@@ -14,24 +14,28 @@ export const Question = mongoose.model(
     },
     answers: {
       a: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Answer',
+        content: {
+          type: String,
+          required: true,
+        },
       },
       b: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Answer',
+        content: {
+          type: String,
+          required: true,
+        },
       },
       c: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Answer',
+        content: {
+          type: String,
+          required: true,
+        },
       },
       d: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Answer',
+        content: {
+          type: String,
+          required: true,
+        },
       },
     },
   }),

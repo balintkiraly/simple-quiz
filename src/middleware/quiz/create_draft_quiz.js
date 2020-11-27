@@ -6,6 +6,7 @@ export const createDraftQuiz = async (req, _res, next) => {
     title: 'Your quiz',
     description: 'Description of the quiz',
     owner: getUserID(req.session),
+    isPublic: false,
   })
 
   next()

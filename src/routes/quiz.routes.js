@@ -37,12 +37,12 @@ router.get('/:id/edit', isAuthenticated, isOwnQuiz, getQuiz, (req, res) => {
   res.render('quiz/edit', { quiz: req.quiz })
 })
 
-router.post('/', createQuiz)
-router.put('/:id', isAuthenticated, isOwnQuiz, updateQuiz)
-router.delete('/:id', isAuthenticated, isOwnQuiz, deleteQuiz)
-
 router.post('/:id/questions', isAuthenticated, isOwnQuiz, createQuestion)
 router.put('/:id/questions/:qid', isAuthenticated, isOwnQuiz, updateQuestion)
 router.delete('/:id/questions/:qid', isAuthenticated, isOwnQuiz, deleteQuestion)
+
+router.post('/', createQuiz)
+router.put('/:id', isAuthenticated, isOwnQuiz, updateQuiz)
+router.delete('/:id', isAuthenticated, isOwnQuiz, deleteQuiz)
 
 export default router

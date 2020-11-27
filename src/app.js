@@ -29,10 +29,15 @@ app.use((req, res, next) => {
 
 app.use(
   bodyParser.urlencoded({
-    extended: false,
+    extended: true,
   }),
 )
 app.use(bodyParser.json())
+app.use(
+  express.json({
+    type: ['application/json', 'text/plain'],
+  }),
+)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 

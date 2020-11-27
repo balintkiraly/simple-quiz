@@ -1,7 +1,7 @@
-import { Question } from '../../models'
+import { Question, Quiz } from '../../models'
 
-export const createQuestion = async (req, _res, next) => {
-  await Question.create({
+export const createQuestion = async (req, res, next) => {
+  const question = await Question.create({
     title: req.body.title,
     correctAnswer: req.body.correctAnswer,
     answers: {
@@ -19,6 +19,17 @@ export const createQuestion = async (req, _res, next) => {
       },
     },
   })
+  await Quiz.findByIdAndUpdate(
+    req.params.id,
+    {
+      $push: {
+        questions: {
+          _id: question._id,
+        },
+      },
+    },
+    { new: true, useFindAndModify: false },
+  )
 
-  return next()
+  res.json(question)
 }
