@@ -2,7 +2,6 @@ import { Quiz } from '../../models'
 import { getUserID } from '../../utils'
 
 export const isOwnQuiz = async (req, res, next) => {
-  console.log('OWN')
   const quiz = await Quiz.find({
     id: req.params.id,
     owner: getUserID(req.session),

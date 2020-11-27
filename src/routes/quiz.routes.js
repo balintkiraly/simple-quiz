@@ -22,12 +22,8 @@ router.get('/', getQuizzes, (req, res) => {
   res.render('quiz/index', { quizzes: req.quizzes })
 })
 
-router.get('/success', (_req, res) => {
-  res.render('quiz/success')
-})
-
 router.get('/new', isAuthenticated, createDraftQuiz, (req, res) => {
-  res.render('quiz/new', { quiz: req.quiz })
+  res.render('quiz/edit', { quiz: req.quiz })
 })
 
 router.get('/:id', getQuiz, (req, res) => {
@@ -45,7 +41,6 @@ router.post('/:id/questions', isAuthenticated, isOwnQuiz, createQuestion)
 router.put('/:id/questions/:qid', isAuthenticated, isOwnQuiz, updateQuestion)
 router.delete('/:id/questions/:qid', isAuthenticated, isOwnQuiz, deleteQuestion)
 
-router.post('/', createQuiz)
 router.put('/:id', isAuthenticated, isOwnQuiz, updateQuiz)
 router.delete('/:id', isAuthenticated, isOwnQuiz, deleteQuiz)
 
