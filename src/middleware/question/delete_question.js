@@ -1,7 +1,9 @@
 import { Question } from '../../models'
 
-export const deleteQuestion = (req, _res, next) => {
-  await Question.deleteOne({ id: req.params.id })
+export const deleteQuestion = async (req, res, next) => {
+  await Question.deleteOne({ _id: req.params.qid })
 
-  next()
+  res.json({
+    success: true,
+  })
 }

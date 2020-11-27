@@ -1,123 +1,55 @@
 <%- include('../components/header') -%>
 
-<h1 class="font-bold text-4xl my-6 text-gray-700 text-center">New Quiz</h1>
+<script src="/scripts/quiz_helper.js"></script>
+
+<h1 class="font-bold text-4xl my-6 text-gray-700 text-center">Edit Quiz</h1>
 
 <div class="max-w rounded m-4 overflow-hidden shadow-lg">
   <div class="px-6 py-4">
-    <div class="font-bold text-2xl text-gray-700 mb-2">Name of the Quiz</div>
-    <input
-      class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-      type="text"
-      value="My first Quiz"
-    />
-    <textarea
-      class="autoexpand tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white"
-    >
-Description of the Quiz</textarea
-    >
+    <form method="POST" action="/quiz/<%= quiz.id %>">
+      <div class="font-bold text-2xl text-gray-700 mb-2">Name of the Quiz</div>
+      <input
+        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+        type="text"
+        name="title"
+        value="<%= quiz.title %>"
+      />
+      <textarea
+        class="autoexpand tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white"
+        name="description"
+      ><%= quiz.description %></textarea>
+      <h2>Link: /quiz/<%= quiz.code %>/private</h2>
 
+      <label class="inline-flex items-center mt-3">
+        <% let checked = quiz.isPublic ? "checked" : "" %>
+
+        <input 
+          type="checkbox"
+          name="isPublic"
+          class="form-checkbox h-5 w-5 text-gray-600"
+          <%= checked %>
+        >
+        <span class="ml-2 text-gray-700">Is public?</span>
+      </label>
+
+      <div class="px-6 pt-4 pb-5 flex flex-col-reverse">
+        <input
+          type="submit"
+          class="self-end shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+          value="Update Quiz"
+        >
+      </div>
+    </form>
     <div class="font-bold text-2xl text-gray-700 mb-2">Questions</div>
 
-    <div class="flex flex-row mt-3 w-full">
-      <input
-        class="appearance-none w-5/6 block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-        type="text"
-        value="First Question?"
-      />
-
-      <div class="w-1/6 text-right">
-        <button
-          class="self-end shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-        >
-          Remove
-        </button>
-      </div>
+    <div id="questions">
+      <% quiz.questions.map((question, index) => { %>
+        <%- include('./question', { quizID: quiz.id, question: question }) -%>
+      <% }) %>
     </div>
-    <hr />
-    <div class="flex flex-col mt-3 w-full">
-      <div class="flex flex-row w-full">
-        <div class="w-5/6 text-gray-700 font-bold">Answer</div>
-        <div class="w-1/6 text-center font-bold text-gray-700 self-end">
-          Correct?
-        </div>
-      </div>
-      <div class="flex flex-row my-2">
-        <input
-          class="w-5/6 self-center appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-          type="text"
-          value="Answer 1"
-        />
-        <div class="w-1/6 self-center text-center">
-          <input
-            type="radio"
-            class="form-radio h-6 w-6 text-teal-600"
-            name="answer"
-          />
-        </div>
-      </div>
+    <%- include('./new_question', { quizID: quiz.id }) -%>
 
-      <div class="flex flex-row my-2">
-        <input
-          class="w-5/6 self-center appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-          type="text"
-          value="Answer 2"
-        />
-        <div class="w-1/6 self-center text-center">
-          <input
-            type="radio"
-            class="form-radio h-6 w-6 text-teal-600"
-            name="answer"
-          />
-        </div>
-      </div>
-
-      <div class="flex flex-row my-2">
-        <input
-          class="w-5/6 self-center appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-          type="text"
-          value="Answer 3"
-        />
-        <div class="w-1/6 self-center text-center">
-          <input
-            type="radio"
-            class="form-radio h-6 w-6 text-teal-600"
-            name="answer"
-            checked
-          />
-        </div>
-      </div>
-
-      <div class="flex flex-row my-2">
-        <input
-          class="w-5/6 self-center appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-          type="text"
-          value="Answer 4"
-        />
-        <div class="w-1/6 self-center text-center">
-          <input
-            type="radio"
-            class="form-radio h-6 w-6 text-teal-600"
-            name="answer"
-          />
-        </div>
-      </div>
-
-      <button
-        class="self-center shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-6 my-4 rounded"
-      >
-        Add new Question
-      </button>
-      <hr />
-    </div>
-    <div class="px-6 pt-4 pb-5 flex flex-col-reverse">
-      <a
-        href="/"
-        class="self-end shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-      >
-        Save Quiz
-      </a>
-    </div>
   </div>
-
-  <%- include('../components/footer') -%>
 </div>
+
+<%- include('../components/footer') -%> 

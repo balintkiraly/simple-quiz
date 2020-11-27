@@ -8,9 +8,13 @@ const quizSteps = (allStep) => {
 
   const onNextClick = () => {
     currentStep++
+    if (currentStep + 1 >= allStep) {
+      document.getElementById('next-button').innerText = 'Submit'
+    }
     if (currentStep >= allStep) {
-      // TODO: Submit the form
-      window.location.href = '/quiz/success'
+      // Submit the form
+      const form = document.getElementById('form')
+      form.submit()
     } else {
       render()
     }

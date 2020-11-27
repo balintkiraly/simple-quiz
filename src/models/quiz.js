@@ -16,6 +16,11 @@ export const Quiz = mongoose.model(
       required: true,
       default: true,
     },
+    code: {
+      type: String,
+      required: true,
+      default: true,
+    },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

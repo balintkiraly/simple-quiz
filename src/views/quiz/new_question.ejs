@@ -1,0 +1,88 @@
+
+<input
+  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+  type="text"
+  name="qtitle"
+  placeholder="Question"
+/>
+
+<hr />
+<div class="flex flex-col mt-3 w-full">
+  <div class="flex flex-row w-full">
+    <div class="w-5/6 text-gray-700 font-bold">Answer</div>
+    <div class="w-1/6 text-center font-bold text-gray-700 self-end">
+      Correct?
+    </div>
+  </div>
+  <div class="flex flex-row my-2">
+    <input
+      class="w-5/6 self-center appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+      type="text"
+      name="answerA"
+      placeholder="Answer 1"
+    />
+    <div class="w-1/6 self-center text-center">
+      <input
+        type="radio"
+        class="form-radio h-6 w-6 text-teal-600"
+        name="answer"
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-row my-2">
+    <input
+      class="w-5/6 self-center appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+      type="text"
+      name="answerB"
+      placeholder="Answer 2"
+    />
+    <div class="w-1/6 self-center text-center">
+      <input
+        type="radio"
+        class="form-radio h-6 w-6 text-teal-600"
+        name="answer"
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-row my-2">
+    <input
+      class="w-5/6 self-center appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+      type="text"
+      name="answerC"
+      placeholder="Answer 3"
+    />
+    <div class="w-1/6 self-center text-center">
+      <input
+        type="radio"
+        class="form-radio h-6 w-6 text-teal-600"
+        name="answer"
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-row my-2">
+    <input
+      class="w-5/6 self-center appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+      type="text"
+      name="answerD"
+      placeholder="Answer 4"
+    />
+    <div class="w-1/6 self-center text-center">
+      <input
+        type="radio"
+        class="form-radio h-6 w-6 text-teal-600"
+        name="answer"
+      />
+    </div>
+  </div>
+
+  <button
+    class="self-center shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-6 my-4 rounded"
+    onClick="createOrUpdateQuestion('<%- quizID %>')"
+  >
+    Save question
+  </button>
+  <hr />
+</div>

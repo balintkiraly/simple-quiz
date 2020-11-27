@@ -1,7 +1,7 @@
 import { Quiz } from '../../models'
 
 export const getQuiz = async (req, res, next) => {
-  req.quiz = await Quiz.find({ id: req.params.id })
+  req.quiz = await Quiz.findById(req.params.id).populate('questions')
 
   if (req.quiz) {
     next()
