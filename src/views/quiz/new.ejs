@@ -1,6 +1,6 @@
 <%- include('../components/header') -%>
 
-<script src="/scripts/quiz_steps.js"></script>
+<script src="/scripts/quiz_helper.js"></script>
 
 <h1 class="font-bold text-4xl my-6 text-gray-700 text-center">New Quiz</h1>
 
@@ -19,15 +19,8 @@
     ><%= quiz.description %></textarea>
 
     <div class="font-bold text-2xl text-gray-700 mb-2">Questions</div>
-    <input
-      class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-      type="text"
-      placeholder="Question"
-    />
 
-    <hr />
-
-    <%- include('./question', {quizID: quiz.id}) -%>
+    <%- include('./new_question', { quizID: quiz.id }) -%>
 
     <div class="px-6 pt-4 pb-5 flex flex-col-reverse">
       <a

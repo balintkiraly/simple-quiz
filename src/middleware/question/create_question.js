@@ -3,23 +3,22 @@ import { Question } from '../../models'
 export const createQuestion = async (req, _res, next) => {
   await Question.create({
     title: req.body.title,
-    description: req.body.description,
     correctAnswer: req.body.correctAnswer,
     answers: {
       a: {
-        content: req.body.answerA,
+        content: req.body.answers.a,
       },
       b: {
-        content: req.body.answerB,
+        content: req.body.answers.b,
       },
       c: {
-        content: req.body.answerC,
+        content: req.body.answers.c,
       },
       d: {
-        content: req.body.answerD,
+        content: req.body.answers.d,
       },
     },
   })
 
-  next()
+  return next()
 }

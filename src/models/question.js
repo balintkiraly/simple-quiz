@@ -7,10 +7,6 @@ export const Question = mongoose.model(
       type: String,
       required: true,
     },
-    description: {
-      type: String,
-      required: true,
-    },
     correctAnswer: {
       type: String,
       required: true,

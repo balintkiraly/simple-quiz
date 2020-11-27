@@ -1,15 +1,31 @@
-const createQuestion = async (quizId) => {
-  const body = {}
-  const response = await fetch(`/quiz/${quizId}/questions`, {
-    method: 'POST',
-    body,
-  })
-  return response.json()
-}
+const answerOptions = ['a', 'b', 'c', 'd']
 
-const updateQuestion = async (quizId, questionId, body) => {
-  const response = await fetch(`/quiz/${quizId}/questions/${questionId}`, {
-    method: 'PUT',
+const createOrUpdateQuestion = async (quizId, questionId = null) => {
+  const namePrefix = questionId ? `${questionId}` : ''
+
+  const corretAnswerRadioValue = [
+    ...document.getElementsByName(`${namePrefix}answer`),
+  ].map((a) => a.checked)
+
+  const body = JSON.stringify({
+    title: document.querySelector(`input[name="${namePrefix}title"]`).value,
+    correctAnswer: answerOptions[corretAnswerRadioValue.indexOf(true)],
+    answers: {
+      a: document.querySelector(`input[name="${namePrefix}answerA"]`).value,
+      b: document.querySelector(`input[name="${namePrefix}answerB"]`).value,
+      c: document.querySelector(`input[name="${namePrefix}answerC"]`).value,
+      d: document.querySelector(`input[name="${namePrefix}answerD"]`).value,
+    },
+  })
+
+  const url = questionId
+    ? `/quiz/${quizId}/questions/${questionId}`
+    : `/quiz/${quizId}/questions`
+
+  const method = questionId ? 'PUT' : 'POST'
+
+  const response = await fetch(url, {
+    method,
     body,
   })
   return response.json()
