@@ -12,6 +12,7 @@ import {
   getQuiz,
   isOwnQuiz,
   sendQuiz,
+  getPrivateQuiz,
 } from '../middleware/quiz'
 import { isAuthenticated } from '../middleware/auth'
 
@@ -26,6 +27,11 @@ router.get('/new', isAuthenticated, createDraftQuiz, (req, res) => {
 })
 
 router.get('/:id', getQuiz, (req, res) => {
+  if (!req.quiz.isPublic) res.render('errors/404')
+  res.render('quiz/show', { quiz: req.quiz })
+})
+
+router.get('/:code/private', getPrivateQuiz, (req, res) => {
   res.render('quiz/show', { quiz: req.quiz })
 })
 
@@ -40,7 +46,7 @@ router.post('/:id/questions', isAuthenticated, isOwnQuiz, createQuestion)
 router.put('/:id/questions/:qid', isAuthenticated, isOwnQuiz, updateQuestion)
 router.delete('/:id/questions/:qid', isAuthenticated, isOwnQuiz, deleteQuestion)
 
-router.put('/:id', isAuthenticated, isOwnQuiz, updateQuiz)
+router.post('/:id', isAuthenticated, isOwnQuiz, updateQuiz)
 router.delete('/:id', isAuthenticated, isOwnQuiz, deleteQuiz)
 
 export default router
