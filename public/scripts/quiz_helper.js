@@ -8,7 +8,7 @@ const createOrUpdateQuestion = async (quizId, questionId = null) => {
   ].map((a) => a.checked)
 
   const body = JSON.stringify({
-    title: document.querySelector(`input[name="${namePrefix}title"]`).value,
+    title: document.querySelector(`input[name="${namePrefix}qtitle"]`).value,
     correctAnswer: answerOptions[corretAnswerRadioValue.indexOf(true)],
     answers: {
       a: document.querySelector(`input[name="${namePrefix}answerA"]`).value,
@@ -29,9 +29,7 @@ const createOrUpdateQuestion = async (quizId, questionId = null) => {
     body,
   })
   const data = await response.json()
-  if (questionId) {
-    // UPDATE
-  } else {
+  if (!questionId) {
     // add the new question to the DOM
     addQuestion({
       id: data.id,
@@ -42,7 +40,7 @@ const createOrUpdateQuestion = async (quizId, questionId = null) => {
     })
     // erease the form
     document.getElementsByName(`answer`).forEach((a) => (a.checked = false))
-    document.querySelector(`input[name="${namePrefix}title"]`).value = ''
+    document.querySelector(`input[name="${namePrefix}qtitle"]`).value = ''
     document.querySelector(`input[name="${namePrefix}answerA"]`).value = ''
     document.querySelector(`input[name="${namePrefix}answerB"]`).value = ''
     document.querySelector(`input[name="${namePrefix}answerC"]`).value = ''
