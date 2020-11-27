@@ -1,18 +1,25 @@
 <%- include('./components/header') -%>
 
+<script src="/scripts/quiz_helper.js"></script>
+
 <h1 class="font-bold text-4xl my-6 text-gray-700 text-center">Welcome on the Simple Quiz site</h1>
 
 <h2 class="font-bold text-2xl my-3 text-gray-700">Latest quizzes</h1>
 
 <section class="flex">
   <% latestQuizzes.map((quiz) => { %>
-    <div class="max-w-sm rounded m-4 flex-col w-1/3 overflow-hidden shadow-lg">
+    <div class="max-w-sm rounded m-4 flex-col w-1/3 overflow-hidden shadow-lg" id="quiz-<%- quiz.id %>">
       <div class="px-6 py-4">
         <div class="font-bold text-xl text-gray-700 mb-2">
           <%= quiz.title %>
           <% if(isLoggedIn) { %>
             <% if(quiz.owner == currentUser.id) { %>
-              OWNER
+              <button onClick="deleteQuiz('<%- quiz.id %>')" class="bg-red-500 hover:bg-red-700 text-white p-1 rounded-full">
+                Delete
+              </button>
+              <a href="<%= `/quiz/${quiz.id}/edit` %>" class="bg-blue-500 hover:bg-blue-700 text-white p-1 rounded-full">
+                Edit
+              </a>
             <% } %>
           <% } %>
         </div>

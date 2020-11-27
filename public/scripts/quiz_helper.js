@@ -162,7 +162,8 @@ const deleteQuestion = async (quizId, questionId) => {
   const response = await fetch(`/quiz/${quizId}/questions/${questionId}`, {
     method: 'DELETE',
   })
-  return data
+  document.getElementById(`question-${quizId}`).remove()
+  return await response.json()
 }
 
 const updateQuiz = async (quizId, body) => {
@@ -170,12 +171,13 @@ const updateQuiz = async (quizId, body) => {
     method: 'PUT',
     body,
   })
-  return data
+  return await response.json()
 }
 
 const deleteQuiz = async (quizId) => {
   const response = await fetch(`/quiz/${quizId}`, {
     method: 'DELETE',
   })
-  return data
+  document.getElementById(`quiz-${quizId}`).remove()
+  return await response.json()
 }

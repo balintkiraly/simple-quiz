@@ -1,7 +1,7 @@
 import { Quiz } from '../../models'
 
-export const deleteQuiz = async (_req, _res, next) => {
-  await Quiz.deleteOne({ id: req.params.id })
+export const deleteQuiz = async (req, _res, next) => {
+  await Quiz.findByIdAndDelete(req.params.id)
 
-  next()
+  return next()
 }
