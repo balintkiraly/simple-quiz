@@ -8,7 +8,8 @@
   "scripts": {
     "start": "yarn build:css && node -r esm ./src/app.js",
     "build:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
-    "watch:css": "postcss --watch public/stylesheets/tailwind.css -o public/stylesheets/style.css"
+    "watch:css": "postcss --watch public/stylesheets/tailwind.css -o public/stylesheets/style.css",
+    "test": "mocha --require esm --exit"
   },
   "dependencies": {
     "@tailwindcss/custom-forms": "^0.2.1",
@@ -29,6 +30,9 @@
     "uuid": "^8.3.1"
   },
   "devDependencies": {
+    "mocha": "^8.2.1",
+    "chai": "^4.2.0",
+    "chai-spies": "^1.0.0",
     "tailwindcss": "^1.8.10"
   }
 }
