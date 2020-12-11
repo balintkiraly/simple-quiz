@@ -24,7 +24,7 @@ afterEach( async () => {
   await Quiz.findByIdAndDelete(quizId)
 })
 
-describe('sendQuiz middleware', () => {
+describe('isOwnQuiz middleware', () => {
   it('should call next', async () => {
     let req = { 
       body: {},
